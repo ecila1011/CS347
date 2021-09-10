@@ -1,0 +1,12 @@
+div {
+    width: 280px;
+    height: 280px;
+    background: url(https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy81MDc0MTQzL29yaWdpbi5qcGciLCJleHBpcmVzX2F0IjoxNjkwNTg5MjQ4fQ.3PehmmUOQXplMuRlTHeAtZrWkm1sD58fgg347Ve5adw/img.jpg?width=980) center center;
+    background-size: cover;
+    transition: 0.4s cubic-bezier(1, -1, 0, 2);
+    clip-path: circle(15%);
+  }
+  div:hover {
+    clip-path: circle(50%);
+  }
+  

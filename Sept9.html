@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Blog Entry</title>
+        <link rel="stylesheet" href="Sept9Style.css">
+    </head>
+  <body>
+    <h1>9/10/2021 Blog Entry</h1>
+
+    <p>
+        I looked up some cool things that you can do with CSS and I found an
+        <a href="https://www.creativebloq.com/features/css-tricks-to-revolutionise-your-layouts" target="_blank">article</a>
+        with some demos about using css for collage and I though it was really cool. (heres the link
+        or that). I really enjoy looking at and creating art, and seeing it created with code that we have 
+        been learning about in class was really interesting. There weren't a whole lot of details about how they
+        created the collages, so I did some further research to find something that I could try out.
+    </p>
+
+    <p>      
+        After doing some further googling, I found this <a href="https://css-tricks.com/clipping-masking-css/" target="_blank">article</a>
+        about clipping and masking and I found the part about making an animation/transition using 
+        clip-path. This article did include some code, that I used as a reference
+        to implement my own little transition. The article used images of Harry
+        Potter to demonstrate all of their techniques however I chose to use a picture of a cat because
+        I thought it was cuter. The code was surprisingly simple and I liked the way that the little animation
+        came out. I think this is a cool aspect of css, and the functions built into the language make it very easy
+        to implement. 
+    </p>
+
+    <p>Here is my css code sample, I made the url shorter here in my example for space sake.</p>
+
+    <pre>
+div {
+    width: 280px;
+    height: 280px;
+    background: url(https://assets.rebelmouse.io) center center;
+    background-size: cover;
+    transition: 0.4s cubic-bezier(1, -1, 0, 2);
+    clip-path: circle(15%);
+  }
+  div:hover {
+    clip-path: circle(50%);
+  }
+    </pre>
+
+    <p>And here is what my little transition/animation looks like, hover over the circle to see it in action.</p>
+    <div></div>
+      
+  </body>
+</html>
