@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Blog Entry</title>
+            <link rel="stylesheet" href="Sept17Style.css">
+        </head>
+      <body>
+        <h1>9/17/2021 Blog Entry</h1>
+        <p> This week I decided to look into how to animate certain 
+            elements using css and I found an <a href="https://www.creativebloq.com/features/css-tricks-to-revolutionise-your-layouts" target="_blank">article</a>
+            that had a lot of details about the different animation elements. I expanded one of the examples in the article
+            that took a square and changed its color and moved it in a square formation. I kept the colors of the square
+            but I added more keyframes and changed where the square ended up at each point. It reminded me of the DVD loading screen
+            so I tried to make it act sort of like that. That ended up being a little more complicated than I anticipated, simply because the
+            speed would change depending on where exactly the square was going and from where. I could have accounted for this but it would
+            have taken some more calculations than I had the time for. Overall, I'm glad that I was able to learn this technique and I hope
+            that I can find a place for it in project 1.
+        </p>
+        <p>
+            Here is the code that I used to create the animation:
+        </p>
+        <pre>
+            .background {
+                background-color: blue;
+                width: 300px;
+                height: 300px;
+            }
+            
+            .square {
+                width: 100px;
+                height: 100px;
+                background-color: blueviolet;
+                position: relative;
+                animation-name: example;
+                animation-duration: 5s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+              }
+            
+              @keyframes example { 
+                    0%   {background-color:red; left:100px; top:0px;}
+                    10%  {background-color:yellow; left:200px; top:40px;}
+                    20%  {background-color:blueviolet; left:150px; top:200px;}
+                    30%  {background-color:green; left:0px; top:100px;}
+                    40%  {background-color:red; left:100px; top:200px;}
+                    50%  {background-color:yellow; left:200px; top:100px;}
+                    60%  {background-color:blueviolet; left:130px; top:200px;}
+                    70%  {background-color:green; left:0px; top:120px;}
+                    80%  {background-color:red; left:100px; top:0px;}
+                    90%  {background-color:yellow; left:200px; top:100x;}
+                    100% {background-color:blueviolet; left:200px; top:0px;}
+                  
+              }
+            </pre>
+
+
+            <p> Here is the little animation that this css code implemented </p>
+            <div class = "background">
+                <div class = "square">
+                </div>
+            </div>
+    
+
+      </body>
+    </html>
