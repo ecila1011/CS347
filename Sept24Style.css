@@ -1,0 +1,53 @@
+/* oh */
+.parent1 {
+    height:5em;
+    overflow-y: hidden;
+    display: block;
+    }
+
+.parent1 .child1 {
+    animation-name: appear;
+    animation-duration: 5s;
+    font-size: 5em;
+    }
+
+@keyframes appear {
+    from { transform: translateY(1.8em) }
+    to { transform: translateY(0) }
+    }
+
+/* hello */
+.parent2 {
+    height:5em;
+    overflow-y: hidden;
+    display: block;
+    }
+    
+.parent2 .child2 {
+    animation-name: slide;
+    animation-duration: 5s;
+    font-size: 5em;
+    }
+    
+@keyframes slide { 
+      from { transform: translateX(-1.8em) }
+      to { transform: translateX(0) }
+    }
+
+/* there */
+.parent3 {
+        height:5em;
+        overflow-y: hidden;
+        display: block;
+        }
+        
+.parent3 .child3 {
+        animation-name: appearup;
+        animation-duration: 5s;
+        font-size: 5em;
+        }
+        
+@keyframes appearup {
+          from { transform: translateY(-1.8em) }
+          to { transform: translateX(0) }
+        }

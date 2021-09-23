@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Entry</title>
+    <link rel="stylesheet" href="Sept24Style.css">
+</head>
+
+<body>
+    <h1>9/24/2021 Blog Entry</h1>
+
+    <p> I wanted to find something cool using css that I could potentially use in my project.
+        I've looked at animations before for my blog posts, but none seemed like they would be something
+        useful enough for my website. So I went looking for something a bit different and found this
+        <a href = "https://uxplanet.org/10-lifesaving-html-css-tricks-for-designers-11bbf76729eb"> article </a>
+        It showed some sample code for how to make an animation for some words that seemingly appeared from
+        nowhere. I thought that was a cool technique so I copied the code and then tried to expand it
+        a bit and played with some other ways for the words to appear. It wasn't anything too crazy technical,
+        but it gave me a good jumping off point for some animations that I could utilize for my project.
+    </p>
+    <p> Here is my little animation that I made </p>
+
+<div class = "parent1">
+    <div class = "child1" >
+        oh
+    </div>
+</div>
+
+<div class = "parent2">
+    <div class = "child2" >
+        hello
+    </div>
+</div>
+
+<div class = "parent3">
+    <div class = "child3" >
+        there
+    </div>
+</div>
+
+<p> Here is the code in my css file that I used to create the animations above. Again, nothing too 
+    crazy difficult but I like that it is relatively straightforward so that it will be easy to implement if I 
+    choose to use it for my project.
+</p>
+
+<pre>
+/* oh */
+.parent1 {
+    height:5em;
+    overflow-y: hidden;
+    display: block;
+    }
+
+.parent1 .child1 {
+    animation-name: appear;
+    animation-duration: 5s;
+    font-size: 5em;
+    }
+
+@keyframes appear {
+    from { transform: translateY(1.8em) }
+    to { transform: translateY(0) }
+    }
+
+/* hello */
+.parent2 {
+    height:5em;
+    overflow-y: hidden;
+    display: block;
+    }
+    
+.parent2 .child2 {
+    animation-name: slide;
+    animation-duration: 5s;
+    font-size: 5em;
+    }
+    
+@keyframes slide { 
+      from { transform: translateX(-1.8em) }
+      to { transform: translateX(0) }
+    }
+
+/* there */
+.parent3 {
+        height:5em;
+        overflow-y: hidden;
+        display: block;
+        }
+        
+.parent3 .child3 {
+        animation-name: appearup;
+        animation-duration: 5s;
+        font-size: 5em;
+        }
+        
+@keyframes appearup {
+          from { transform: translateY(-1.8em) }
+          to { transform: translateX(0) }
+        }
+
+
+</body>
+
+</html>
