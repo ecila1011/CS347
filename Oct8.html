@@ -12,23 +12,52 @@
 <body>
     <h1>9/24/2021 Blog Entry</h1>
 
-    <p> 
+    <p> I did not have enough time this week as I would've liked to be able to properly
+        do some research and find something to work on. I found this <a href = "https://css-tricks.com/snippets/css/typewriter-effect/"> link </a> 
+        and decided to try and make an animation that acted like a type-writer. For some reason it
+        is giving me issues and won't appear as though it is being typed. I triple checked
+        that my code matched the example, and it still did not work for some reason. I will
+        include my code below and what the animation does. Currently, only the cursor works. 
+        Although I just don't have enough time to continue messing with this today, 
+        I'm thinking that I can devote more time to it next week, and also try and implement
+        it using js. There was a js example in the same link that I found that I want to use as a 
+        guide but also expand on a bit more. I am unfamiliar with js and am rusty on using
+        java, so I'm excited to figure this example out in css and then see how it can be
+        implemented using js.
     </p>
 
-    <p>  </p>
+    <p>Here is the animation that I was able to create using the code below. Only the cursor
+        seems to be animated and I can't figure out how to make it appear as though it is being typed.
+    </p>
 
-<p> Here is the code in my css file that I used to create the animations above. Again, nothing too 
-    crazy difficult but I like that it is relatively straightforward so that it will be easy to implement if I 
-    choose to use it for my project.
+    <div class="typewriter">
+        <span>Hello! I am a type-writer!</span>
+      </div>
+
+<p> Here is the code in my css file that I used to create the animation above. 
 </p>
 
 <pre>
+    .typewriter span {
+        color: #262626;
+        overflow: hidden;   
+        border-right: .10em solid #FF8D8D;
+        white-space: nowrap;   
+        margin: 0 auto;   
+        letter-spacing: .4rem;   
+        animation: typing 3s steps(30, end), cursor 1s step-end infinite;
+        animation-fill-mode: forwards;
+      }
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      @keyframes cursor {
+        from, to { border-color: transparent }
+        50% { border-color: #FF8D8D }
+      }
 </pre>
-
-<div class="demo-typewriter">
-    <span>This is a typewriter effect!</span>
-  </div>
-
 
 </body>
 
