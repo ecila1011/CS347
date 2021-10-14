@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Entry</title>
+    <link rel="stylesheet" href="Oct15Style.css">
+</head>
+
+<body>
+    <h1>10/15/2021 Blog Entry</h1>
+
+    <p> This week I decided to implement something similar to what I did last week, but that would
+        actually work. My blog post last week made a typewriter style animation using css. This week
+        I used a different example from the same 
+        <a href = "https://css-tricks.com/snippets/css/typewriter-effect/"> article </a> to create 
+        a type writer style animation that actually works. The way that the type-writer function worked
+        using css was to hide parts of the text and slowly reveal it, to give the illusion that
+        it was being typed. With this javascript version, it actually adds and removes letters and 
+        looks more realistic. It also allows for the backspacing effect. I think that it turned out 
+        very cool. I didn't change anything on the javascript side of the example, but I did mess with 
+        a bit of the formatting in the css file. I did however read through the javascript code and 
+        add comments so that I could try and understand what is going on for everything. Overall, 
+        Javascript has proven to have quite the learning curve but between the labs and looking at coded 
+        examples like this one, I am slowly but surely learning.
+    </p>
+
+    <p> Here is the animation that I made for this weeks blog. There are five different phrases that will appear.
+    </p>
+
+    <h2>
+        <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, my name is Alice.", "I am a programmer.", "I am an artist.", "I love to code.", "I love to crochet" ]'>
+          <span class="wrap"></span>
+        </a>
+      </h2>
+
+<p> Here is the code in my Javascript file that I used to create the animation above. I added comments so 
+    that I could try and understand what the example was exactly doing at each point. Some of it was 
+    still a bit hard to follow, but adding the comments did help me to slow down and actually try to understand 
+    the code and what exactly it is doing.
+</p>
+
+<pre>
+    // this will initilaize some varibles needed in the tick function
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+    
+    // this is the function that actually controls the display and deletion of the text
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+    
+        // changes text value depending on whether we are adding or deleting
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+    
+        // I think that this is for formatting
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    
+        // initialize some delta to use for the timeout funciton
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+    
+        if (this.isDeleting) { delta /= 2; }
+    
+        // I think that this is used to smooth out the animation and/or make it 
+        // seem a bit more realistic and not as stiff
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+    
+        // set the timeout before going back to the function to display the next phrase
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+    
+    // This function executes when the browser loads the object
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+    
+        // for every element i in the class typewrite
+        for (var i=0; i < elements.length; i++) {
+    
+            // gets the current element of the data array for the given element i
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+    
+            // if toRotate is not null, send it to get typed
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+    
+        // implement CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
+</pre>
+
+<script src="Oct15js.js"></script>
+
+</body>
+
+</html>
