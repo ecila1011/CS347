@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Entry</title>
+</head>
+
+<body>
+    <h1>11/5/2021 Blog Entry</h1>
+
+    <p> This week I decided to look a tutorial for react so that I could try to get a better
+        understanding of how it works. I had some trouble with the lab we did in class today and I wanted
+        to make sure that I understood what exactly we did so that I won't be as lost (hopefully) going forward.
+        I found <a href = "https://reactjs.org/tutorial/tutorial.html"> this tutorial </a> from reactjs that walks 
+        you through creating a tic tac toe game. I really liked it because it went more in depth than other articles
+        I have found for these blogs in the past. It walked me through each part and slightly changed things at each level
+        rather than just jumping right to the end. It supplied me with some code to work with at the beginning, and then
+        walked through all of the steps and was specific about how everything interacted with each other. It definitely
+        helped me understand things a lot more, but this stuff is still quite confusing to me. I liked this style of blog
+        and I think it was beneficial for me to use a tutorial since I definietly need a lot more hand holding for this kind
+        of coding at least at this stage in learning it. the square function and board class of my code
+        from the tutorial is included below.
+    </p>
+
+<p> This function controls each square of the tic tac toe board. It itself is maintained by the Board class. This method in
+    particular was changed a lot throughout the tutorial, and was rather interesting to see how it interacted with the board. At first
+    it was its own class and had its own constructor and render functions, but as the tutorial went on, all of those necessary
+    state changes were passed up to the board.
+</p>
+
+<pre>
+    function Square(props) {
+        return (
+            &lt;button 
+                className="square"
+                onClick={props.onClick}>
+                    {props.value}
+                &lt;/ button&gt;
+        )
+    }
+</pre>
+
+<p>This is the board class. This controls the square class as well as the overall 
+    state of each of the squares. It also takes care of calculating the winner, by calling another
+    function that I did not include here. 
+</p>
+
+<pre>
+    class Board extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                squares: Array(9).fill(null),
+                xIsNext: true,
+            };
+        }
+    
+        handleClick(i) {
+            const squares = this.state.squares.slice();
+            if (calculateWinner(squares) || squares[i]) {
+                return;
+            }
+            squares[i] = this.state.xIsNext ? 'X' : 'O';
+            this.setState({
+                squares: squares,
+                xIsNext: !this.state.xIsNext,
+            });
+        }
+    
+        renderSquare(i) {
+          return (
+            &lt;Square 
+                value={this.state.squares[i]} 
+                onClick={ () => this.handleClick(i)}
+                /&gt;
+          );
+        }
+      
+        render() {
+          const winner = calculateWinner(this.state.squares);
+          let status;
+          if (winner) {
+            status = 'Winner ' + winner;
+          } else {
+            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+          }
+      
+          return (
+            &lt;div>
+                &lt;div className="status">{status}</div>
+                &lt;div className="board-row">
+                        {this.renderSquare(0)}
+                        {this.renderSquare(1)}
+                        {this.renderSquare(2)}
+                    &lt;/div>
+                    &lt;div className="board-row">
+                        {this.renderSquare(3)}
+                        {this.renderSquare(4)}
+                        {this.renderSquare(5)}
+                    &lt;/div>
+                    &lt;div className="board-row">
+                        {this.renderSquare(6)}
+                        {this.renderSquare(7)}
+                        {this.renderSquare(8)}
+                    &lt;/div>
+                    &lt;/div>
+          );
+        }
+      }
+</pre>
+
+</body>
+
+</html>
