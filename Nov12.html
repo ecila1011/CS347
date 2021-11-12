@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Entry</title>
+</head>
+
+<body>
+    <h1>11/12/2021 Blog Entry</h1>
+    <p>I really liked the way I chose to do last weeks blog post,
+        where I found a tutorial online and followed it to make a react app. 
+        I am still beyond lost when it comes to all of this, but I feel like walking through 
+        examples both in the labs in class as well as these tutorials on my own are helping. 
+        The <a href = "https://www.akashmittal.com/reactjs-sample-project-step-by-step/"> tutorial </a>
+         I found this week was a component that created a burger display. It was rather 
+        simple and straight forward, but still was a bit challenging in places to figure out simply 
+        because I barely know what I'm doing. I think that this little example has a potential to be 
+        expanded on for my next blog post. Some way that I can take in user input to create the burger. 
+        Whether it be the number of different ingredients or their order or both. I could have attempted 
+        it for this blog post, however I think it would end up being a lot for today. So I'm hoping that 
+        next week, with a bit more understanding of how to use react, I can expand this example.
+    </p>
+
+    <p>I created seperate JS files for each of the burger ingredients, and each had its 
+        own css file to create the image for that ingredient. Then, I had a Create Burger file 
+        that took in an object from the App.js to create the burger itself, and then displayed it.
+        I have included both the important parts of the App.js file and the CreateBurger.js file, since 
+        they contain the bulk of the code.
+    </p>
+
+    <p>App.js</p>
+    <pre>
+        function App() {
+
+            return (
+              &lt;div className="App">
+                &lt;h1>Choose Your Burger Ingredients&lt;/h1>
+                &lt;CreateBurger
+                  burgerStack={[
+                    'Lettuce',
+                    'Tomatoes',
+                    'Cheese',
+                    'Lettuce',
+                    'Burger',
+                    'Tomatoes',
+                    'Tomatoes'
+                  ]}
+                />
+              &lt;/div>
+            );
+          }
+    </pre>
+
+    <p>CreateBurger.js</p>
+    <pre>
+        export default function CreateBurger(props) {
+            const BurgerStack = props.burgerStack.map((item, index) => {
+              switch (item) {
+                case 'Cheese':
+                  return &lt;Cheese key={index} />;
+                case 'Lettuce':
+                  return &lt;Lettuce key={index} />;
+                case 'Burger':
+                  return &lt;Burger key={index} />;
+                case 'Tomatoes':
+                  return &lt;Tomatoes key={index} />;
+                default:
+                  return null;
+              }
+            });
+          
+            return (
+              &lt;div>
+                &lt;BreadUpper />
+                {BurgerStack}
+                &lt;BreadLower />
+              &lt;/div>
+            );
+          }
+    </pre>
+</body>
+
+</html>
