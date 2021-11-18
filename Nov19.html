@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Entry</title>
+</head>
+
+<body>
+    <h1>11/19/2021 Blog Entry</h1>
+    <p> This week, like the past two, I decided to walk through another react
+        <a href = "https://www.freecodecamp.org/news/how-to-build-a-shopping-list-using-react-hooks-w-starter-code-and-video-walkthrough/"> tutorial. </a>
+        These are really interesting
+        to me, and each seems to be set up a bit differently. This one, for example, had all of its functions in the 
+        App file itself. Whereas last week each part of the burger had its own js file. I know that it is allowed to all 
+        be in one file, I just generally like to seperate it out. So its always intriguing seeing it all in one place. 
+        It also helped a lot in this tutorial, so that I wasn't jumping around between a bunch of different files. This tutorial 
+        created a shopping list and allowed for you to enter and change things. I wanted to exapnd my burger tutorial from last 
+        week to be able to be changed, however I quickly realized that I am very confused with react still. So, I figured an 
+        interactive shopping list may help me understand more of the user input side of things, and then I can expand on my burger 
+        tutorial in a future blog post. All in all, this tutorial gave me another way of understanding react, and I am very slowly,
+        but surely, understanding more and more of how everything interacts and how to move forward in labs as well as the project.
+    </p>
+
+    <p> I included part of the App.js code that I used for this tutorial. There is quite a bit of formatting and therefore a lot 
+        of messy looking divs and spacing and such. I am not including that part as it is long and I think that the functions 
+        are a bit more important. The functions written were added as different events for each aspect of the list,
+        as noted in the comments I added above each one. 
+    </p>
+
+    <p>App.js</p>
+    <pre>
+        // ************ state values ************* //
+        // HINT: each "item" in our list names a name, a boolean to tell if its been completed, and a quantity
+        const [items, setItems] = useState([
+            { itemName: 'item1', quantity: 1, isSelected: false },
+            { itemName: 'item 2', quantity: 3, isSelected: true },
+            { itemName: 'item 3', quantity: 2, isSelected: false },
+        ]);
+        const [inputValue, setInputValue] = useState('');
+        const [totalItemCount, setTotalItemCount] = useState(6);
+    
+        // this function adds a new item to the list when the plus button is clicked 
+        const handleAddButtonClick = () => {
+            const newItem = {
+                itemName: inputValue,
+                quantity: 1,
+                isSelected: false,
+            };
+        
+            const newItems = [...items, newItem];
+        
+            setItems(newItems);
+            setInputValue('');
+    
+            calculateTotal();
+        };
+    
+        // this function marks each item as complete, or unselects it when the circle is clicked
+        const toggleComplete = (index) => {
+            const newItems = [...items];
+        
+            newItems[index].isSelected = !newItems[index].isSelected;
+        
+            setItems(newItems);
+        };
+    
+        // this function increases the quantity of an item when the > is clicked next to the number
+        const handleQuantityIncrease = (index) => {
+            const newItems = [...items];
+        
+            newItems[index].quantity++;
+        
+            setItems(newItems);
+    
+            calculateTotal();
+        };
+    
+        // this function decreases the quantity of an item when the < is clicked next to the number
+        const handleQuantityDecrease = (index) => {
+            const newItems = [...items];
+        
+            newItems[index].quantity--;
+        
+            setItems(newItems);
+    
+            calculateTotal();
+        };
+    
+        // this function updates the total count of items on the list that is shown at the bottom of the list
+        const calculateTotal = () => {
+            const totalItemCount = items.reduce((total, item) => {
+                return total + item.quantity;
+            }, 0);
+        
+            setTotalItemCount(totalItemCount);
+        };
+    </pre>
+
+</body>
+
+</html>
